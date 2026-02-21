@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Netrise Ventures LLC | App Development Studio</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <meta name="description" content="Netrise Ventures LLC is an app development business building iOS and web products for modern companies." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #eeeddc;
+      --ink: #14151a;
+      --ink-soft: #1d1f25;
+      --green: #0c5b4f;
+      --mint: #d9f0db;
+      --lavender: #d9b8ea;
+      --muted: #5f625f;
+      --line: rgba(20, 21, 26, 0.15);
+      --radius-lg: 34px;
+      --radius-md: 16px;
+      --container: 1150px;
+      --nav-height: 88px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: "Plus Jakarta Sans", sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      overflow-x: hidden;
+      background-image: radial-gradient(circle at 12% -3%, rgba(12, 91, 79, 0.12), transparent 36%);
+    }
+
+    .wrap {
+      width: min(var(--container), calc(100% - 2.4rem));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(8px);
+      background: rgba(238, 237, 220, 0.82);
+      border-bottom: 1px solid rgba(20, 21, 26, 0.08);
+    }
+
+    .nav-shell {
+      height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.72rem;
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+
+    .brand-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: linear-gradient(150deg, #f7f7ea, #e2e0cb);
+      display: grid;
+      place-items: center;
+      font-family: "Instrument Serif", serif;
+      font-size: 1.1rem;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-btn {
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      background: rgba(255, 255, 255, 0.42);
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 0.86rem;
+      font-weight: 600;
+      padding: 0.58rem 0.84rem;
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .nav-btn:hover,
+    .nav-btn:focus-visible {
+      transform: translateY(-1px);
+      border-color: rgba(20, 21, 26, 0.35);
+      background: rgba(255, 255, 255, 0.82);
+    }
+
+    .nav-btn.cta {
+      background: var(--lavender);
+      border-color: rgba(20, 21, 26, 0.45);
+    }
+
+    section[id] {
+      scroll-margin-top: calc(var(--nav-height) + 20px);
+    }
+
+    .hero {
+      padding: 5.2rem 0 3rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.35rem 0.78rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.45);
+    }
+
+    .hero .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--green);
+    }
+
+    h1 {
+      font-family: "Instrument Serif", serif;
+      font-weight: 400;
+      font-size: clamp(2.8rem, 7.2vw, 5.8rem);
+      line-height: 0.98;
+      letter-spacing: -0.015em;
+      margin: 1.25rem auto 0.9rem;
+      max-width: 13ch;
+    }
+
+    .hero strong {
+      font-style: italic;
+      color: #4e3f55;
+      font-weight: 400;
+    }
+
+    .lead {
+      max-width: 70ch;
+      margin: 0 auto;
+      color: #4f514e;
+      line-height: 1.75;
+      font-size: 1.02rem;
+    }
+
+    .hero-cta {
+      margin-top: 1.45rem;
+      display: flex;
+      justify-content: center;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-cta a {
+      text-decoration: none;
+      border-radius: 11px;
+      padding: 0.72rem 1rem;
+      font-size: 0.88rem;
+      font-weight: 600;
+      border: 1px solid rgba(20, 21, 26, 0.45);
+      color: var(--ink);
+      background: #f9f9ee;
+    }
+
+    .hero-cta a.primary {
+      background: var(--lavender);
+    }
+
+    .curve-stage {
+      margin-top: 3rem;
+      background: var(--ink-soft);
+      color: #f5f6ef;
+      border-radius: 42px;
+      padding: 3.2rem 1.8rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .curve-stage::before {
+      content: "";
+      position: absolute;
+      left: -6%;
+      right: -6%;
+      top: 53%;
+      height: 220px;
+      border-top: 2px solid rgba(255, 255, 255, 0.23);
+      border-radius: 100% 100% 0 0;
+      transform: rotate(-4deg);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .stage-content {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 0.9fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .stage-copy h2 {
+      font-family: "Instrument Serif", serif;
+      font-weight: 400;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1.05;
+      margin: 0 0 0.7rem;
+      max-width: 12ch;
+    }
+
+    .stage-copy p {
+      margin: 0;
+      color: rgba(245, 246, 239, 0.75);
+      max-width: 40ch;
+      line-height: 1.7;
+    }
+
+    .app-orbit {
+      margin-top: 1.3rem;
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .app-orbit span {
+      font-size: 0.72rem;
+      color: #d6d9d0;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 999px;
+      padding: 0.26rem 0.56rem;
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .phone {
+      margin-inline: auto;
+      width: min(310px, 100%);
+      border: 2px solid rgba(241, 244, 233, 0.8);
+      border-radius: 28px;
+      padding: 0.9rem;
+      background: rgba(255, 255, 255, 0.03);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+    }
+
+    .phone-screen {
+      border: 1px solid rgba(241, 244, 233, 0.25);
+      border-radius: 20px;
+      min-height: 305px;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .chat {
+      font-size: 0.86rem;
+      max-width: 18ch;
+      padding: 0.62rem 0.72rem;
+      border-radius: 12px;
+      color: #e9ebe1;
+      background: rgba(255, 255, 255, 0.1);
+      line-height: 1.4;
+    }
+
+    .mic {
+      border: 1px solid rgba(241, 244, 233, 0.65);
+      border-radius: 999px;
+      padding: 0.7rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.84rem;
+      color: #e9ebe1;
+      letter-spacing: 0.1em;
+    }
+
+    .workflow {
+      padding: 4.6rem 0 1rem;
+      text-align: center;
+    }
+
+    .workflow h3 {
+      font-family: "Instrument Serif", serif;
+      font-weight: 400;
+      font-size: clamp(2rem, 5.2vw, 4rem);
+      line-height: 1.05;
+      margin: 0;
+    }
+
+    .workflow p {
+      margin: 1rem auto 0;
+      max-width: 64ch;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .workflow-grid {
+      margin-top: 2rem;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.8rem;
+      text-align: left;
+    }
+
+    .workflow-card {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 1.1rem;
+      background: rgba(255, 255, 255, 0.48);
+      min-height: 165px;
+    }
+
+    .workflow-card small {
+      font-size: 0.78rem;
+      color: #6c716b;
+      letter-spacing: 0.06em;
+    }
+
+    .workflow-card h4 {
+      margin: 0.45rem 0 0.4rem;
+      font-family: "Instrument Serif", serif;
+      font-weight: 400;
+      font-size: 1.6rem;
+      line-height: 1.1;
+    }
+
+    .workflow-card span {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
+
+    .about-services {
+      padding: 4.3rem 0 1rem;
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 1.2rem;
+      align-items: start;
+    }
+
+    .about-copy h4 {
+      font-family: "Instrument Serif", serif;
+      font-weight: 400;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      margin: 0;
+      line-height: 1.1;
+      max-width: 13ch;
+    }
+
+    .about-copy p {
+      color: var(--muted);
+      line-height: 1.75;
+      max-width: 45ch;
+      margin-top: 0.85rem;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem;
+    }
+
+    .service-grid article {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.45);
+      padding: 1rem;
+      min-height: 136px;
+    }
+
+    .service-grid strong {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    .service-grid span {
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.55;
+    }
+
+    .contact {
+      margin: 3.2rem 0 2.4rem;
+      border-radius: 20px;
+      background: #0d5b4f;
+      color: #edf6f0;
+      padding: 1.3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .contact h5 {
+      margin: 0;
+      font-size: 1.05rem;
+    }
+
+    .contact p {
+      margin: 0.4rem 0 0;
+      color: rgba(237, 246, 240, 0.78);
+      font-size: 0.9rem;
+    }
+
+    .contact a {
+      text-decoration: none;
+      color: #14201b;
+      background: #e4efdb;
+      border-radius: 999px;
+      font-weight: 700;
+      padding: 0.64rem 0.92rem;
+      border: 1px solid rgba(20, 21, 26, 0.25);
+      white-space: nowrap;
+    }
+
+    footer {
+      border-top: 1px solid rgba(20, 21, 26, 0.1);
+      padding: 1rem 0 1.9rem;
+      color: #656a64;
+      font-size: 0.84rem;
+    }
+
+    [data-animate] {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    [data-animate].is-visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (max-width: 980px) {
+      .stage-content,
+      .about-services {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+    @media (max-width: 760px) {
+      .nav-shell {
+        height: auto;
+        padding: 0.8rem 0;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .service-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .workflow-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .curve-stage {
+        border-radius: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav-shell">
+      <a class="brand" href="#top" aria-label="Netrise Ventures home">
+        <span class="brand-mark">NV</span>
+        <span>Netrise Ventures LLC</span>
+      </a>
+
+      <nav class="nav-right" aria-label="Primary navigation">
+        <a class="nav-btn" href="#about">About</a>
+        <a class="nav-btn" href="#services">Services</a>
+        <a class="nav-btn cta" href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero wrap" aria-labelledby="hero-title" data-animate>
+      <span class="eyebrow">App Development Business</span>
+      <h1 id="hero-title">Don&apos;t just launch apps. <strong>Build trusted products.</strong></h1>
+      <p class="lead">
+        Netrise Ventures LLC is a U.S.-based software business focused on iOS and web product development. We build polished mobile and web apps with practical architecture,
+        clean user experiences, and reliable release cycles for growing products.
+      </p>
+      <div class="hero-cta">
+        <a href="#services" aria-label="View services">View services</a>
+        <a href="#contact" class="primary" aria-label="Contact Netrise Ventures">Contact company</a>
+      </div>
+
+      <div class="curve-stage" data-animate>
+        <div class="stage-content">
+          <div class="stage-copy">
+            <h2>Build faster across iOS, web, and business operations.</h2>
+            <p>
+              We design and ship production software with practical architecture, clear interfaces, and release discipline.
+              From first version to ongoing updates, our work is built for reliability and growth.
+            </p>
+            <div class="app-orbit" aria-label="Supported platforms and tools">
+              <span>iOS</span>
+              <span>Web</span>
+              <span>API</span>
+              <span>Stripe</span>
+              <span>Firebase</span>
+              <span>Analytics</span>
+            </div>
+          </div>
+
+          <div class="phone" aria-label="Product mockup">
+            <div class="phone-screen">
+              <div>
+                <small>Client message</small>
+                <p class="chat">Can we go live this week? We need an updated iOS build and dashboard.</p>
+              </div>
+              <div class="mic">VOICE INPUT ACTIVE</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="workflow wrap" aria-labelledby="workflow-title" data-animate>
+      <h3 id="workflow-title">How we build apps that are launch-ready</h3>
+      <p>
+        Our process stays simple and fast: clear planning, focused implementation, and reliable handoff.
+        You get production-quality apps without unnecessary process overhead.
+      </p>
+
+      <div class="workflow-grid" aria-label="App development workflow">
+        <article class="workflow-card">
+          <small>STEP 01</small>
+          <h4>Plan</h4>
+          <span>Define product goals, required features, and technical scope before development starts.</span>
+        </article>
+        <article class="workflow-card">
+          <small>STEP 02</small>
+          <h4>Build</h4>
+          <span>Ship clean, maintainable iOS and web code with strong UX and reliable release practices.</span>
+        </article>
+        <article class="workflow-card">
+          <small>STEP 03</small>
+          <h4>Scale</h4>
+          <span>Iterate post-launch with analytics, user feedback, and prioritized feature updates.</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="about-services wrap" id="about" data-animate>
+      <div class="about-copy">
+        <h4>Software partner for founders and modern teams.</h4>
+        <p>
+          We help companies turn ideas into stable, high-quality products. Netrise Ventures LLC handles product planning,
+          implementation, and iterative releases with a focus on speed, clarity, and software quality.
+        </p>
+      </div>
+
+      <div class="service-grid" id="services" aria-label="Services list">
+        <article>
+          <strong>iOS App Development</strong>
+          <span>Native and cross-platform mobile products, built for performance and long-term maintenance.</span>
+        </article>
+        <article>
+          <strong>Web Product Engineering</strong>
+          <span>Responsive web applications and internal dashboards with modern frontend systems.</span>
+        </article>
+        <article>
+          <strong>MVP & Product Strategy</strong>
+          <span>Practical scoping and roadmap planning that keeps launch timelines realistic and focused.</span>
+        </article>
+        <article>
+          <strong>Support & Version Updates</strong>
+          <span>Post-launch feature work, bug resolution, and release support for ongoing growth.</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap contact" id="contact" data-animate>
+      <div>
+        <h5>Contact Netrise Ventures LLC</h5>
+        <p>For business inquiries and app development partnerships.</p>
+      </div>
+      <a href="mailto:info@netriseventures.online">info@netriseventures.online</a>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">© <span id="year"></span> Netrise Ventures LLC. All rights reserved.</div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll("[data-animate]").forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>
